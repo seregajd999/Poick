@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>поиска по сайту без БД.</title>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+
+<!--Добавить в конец сайта перд Body-->
+<script>
+function showResult(str) {if (str.length==0) {document.getElementById("livesearch").innerHTML="";return;}
+if (window.XMLHttpRequest) {xmlhttp=new XMLHttpRequest();}else{xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");}
+ xmlhttp.onreadystatechange=function() {if (xmlhttp.readyState==4 && xmlhttp.status==200) {document.getElementById("livesearch").innerHTML=xmlhttp.responseText;}}
+ xmlhttp.open("GET","livesearch.php?q="+str,true); xmlhttp.send();}
+</script>
+<!--End-->
+</head>
+
+<body>
+
+<!--Добавить туда где должна быть строка поимка-->
+<div id="poisk">
+<form><input type="text" size="30" onkeyup="showResult(this.value)" class="who"><div id="livesearch"></div></form>
+</div>
+<!--End-->
+
+</body></html>
